@@ -60,7 +60,8 @@ public class ComponentManager {
     }
 
     /*Method to find the highest current ID, and generate the next ID for a newly added 
-    component.*/
+    component. Loops through all components, finds the highest ID currently, and returns 
+    next available ID.*/
 
     public int getNextComponentId() {
         int maxId = 0;
@@ -75,7 +76,7 @@ public class ComponentManager {
     /*Method to delete a component from the database. Finds the component using its ID, 
     and stores it in 'component'. If the ID cannot be found, false is returned. If the 
     ID is found, the component is removed, the action is logged and true is returned. 
-    The Main program uses the boolean value to signify success or failiure.*/
+    The Main program uses the boolean value to signify success or failure.*/
 
     public boolean deleteComponent(int id, String username) {
 
