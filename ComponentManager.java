@@ -59,6 +59,19 @@ public class ComponentManager {
         return null;
     }
 
+    /*Method to find the highest current ID, and generate the next ID for a newly added 
+    component.*/
+
+    public int getNextComponentId() {
+        int maxId = 0;
+        for (Component c : components) {
+            if (c.getId() > maxId) {
+                maxId = c.getId();
+            }
+        }
+        return maxId + 1;
+    }
+
     /*Method to delete a component from the database. Finds the component using its ID, 
     and stores it in 'component'. If the ID cannot be found, false is returned. If the 
     ID is found, the component is removed, the action is logged and true is returned. 
