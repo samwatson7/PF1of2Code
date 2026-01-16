@@ -54,7 +54,7 @@ public class InventoryLogger {
         } catch (IOException e) {
             System.out.println("Error writing to log file");
         }
+
+
     }
-
-
 }
