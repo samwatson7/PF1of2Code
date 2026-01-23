@@ -1,0 +1,6 @@
+2026-01-23 15:01:30 | Username: Sam | Action: ADD COMPONENT | Component: Transistor | Quantity: 100
+2026-01-23 15:01:52 | Username: Sam | Action: ADD COMPONENT | Component: Copper Wire | Quantity: 1000
+2026-01-23 15:02:24 | Username: James4.0 | Action: ADD COMPONENT | Component: Lead Weight | Quantity: 5000
+2026-01-23 15:07:02 | Username: Sam | Action: ADD COMPONENT | Component: Component A | Quantity: 100
+2026-01-23 15:07:14 | Username: Holly | Action: ADD COMPONENT | Component: Component B | Quantity: 1000
+2026-01-23 15:07:44 | Username: John | Action: ADD COMPONENT | Component: Component C | Quantity: 500

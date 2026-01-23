@@ -22,6 +22,9 @@ public class Main {
         //ComponentManager Object
         ComponentManager componentManager = new ComponentManager(logFile, notificationManager);
 
+        //Reload the stored inventory file, into the ArrayList
+        componentManager.loadInventory();
+
 
         //Boolean variable to signify the program is running or when quit has been hit.
         boolean running = true;
@@ -206,10 +209,11 @@ public class Main {
                     logFile.displayLog();
                     break;
 
-                /* Case 6 represents the displaying of the quitting of the program. */
+                /* Case 6 represents the displaying of the quitting of the program. And the saving of the ArrayList to the CSV File.*/
                 case 6:
-                    running = false;
+                    componentManager.saveInventory();
                     System.out.println("Exiting Component Tracking Tool. Goodbye!");
+                    running = false;
                     break;
  
             }

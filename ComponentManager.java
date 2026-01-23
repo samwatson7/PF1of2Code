@@ -1,5 +1,9 @@
-//ArrayList Library Import
+//Library Imports
 import java.util.ArrayList;
+import java.io.FileWriter;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class ComponentManager {
 
@@ -10,6 +14,9 @@ public class ComponentManager {
     
     //ArrayList made up of multiple Component, named 'components'. Stores all of the components.
     private ArrayList<Component> components;
+
+    //CSV file to store the component database, when program is not actively running
+    private static final String inventoryStorageFile = "inventory_storage_file.csv";
 
     //Singular shared logger instance. This ensures all actions are recorded consistently.
     private InventoryLogger logFile;
@@ -129,4 +136,58 @@ public class ComponentManager {
             System.out.println(component.getDisplayString());
         }
     }
-}
+
+    /*Method to save the memory ArrayList<Component> to a storage CSV file. CSV file is opened in overwrite mode. 
+    Try with resources ensures file closes automatically. ArrayList<Component> is iterated through and for every 
+    Component, the inventoryWriter writes (id,name,quantity,threshold). A new line is is created for every 
+    component. If the writter is unable to write to the file, the error is caught, and an error message is printed.  */
+
+    public void saveInventory(){
+        try (FileWriter inventoryWriter = new FileWriter(inventoryStorageFile)) {
+            
+            for (Component component : components) {
+                inventoryWriter.write(
+                    component.getId() + "," + 
+                    component.getName() + "," + 
+                    component.getQuantity() + "," + 
+                    component.getThreshold() + "\n"
+                );
+            } } catch (IOException e) {
+                System.out.println("Error saving inventory to file");
+            }
+
+        }
+
+    /*Method to load all previously saved components from the CSV file into the programs memory database 
+    (ArrayList<Component>). Try with resources opens the inventoryStorageFile for reading. The file is 
+    auto closed after use. 'line' is a temporary variable that stores each CSV line during reading. The 
+    CSV is read line by line, stopping at the end (when the line is null). The CSV line is split into 
+    substrings representing each component field. Id, quantity, and threshold are converted into integers, 
+    while name remains a string. Each object is reconstructed and added back to the ArrayList<Component>. 
+    If the file cannot be read, the error is caught and and error message is displayed.*/
+
+    public void loadInventory() {
+        try (BufferedReader inventoryReader = new BufferedReader(new FileReader(inventoryStorageFile))) {
+
+            String line;
+
+            while ((line = inventoryReader.readLine()) != null) {
+
+                String[] data = line.split(",");
+                if (data.length != 4) continue;
+
+                int id = Integer.parseInt(data[0]);
+                String name = data[1];
+                int quantity = Integer.parseInt(data[2]);
+                int threshold = Integer.parseInt(data[3]);
+
+                Component component = new Component(id, name, quantity, threshold);
+                components.add(component);
+            }
+        } catch (IOException e) {
+            System.out.println("Unable to load inventory. Starting a new inventory file.");
+        }
+
+    }
+
+    }
