@@ -4,6 +4,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
+ 
+
         //Scanner Declaration
         Scanner scanner = new Scanner(System.in);
 
@@ -65,7 +67,7 @@ public class Main {
                     if (postValidationName == null) {
                         System.out.println("Invalid name. This operation is cancelled.");
                         break;
-                    }
+                    } 
 
                     //Component quantity collection, verification and storage.
                     System.out.println("Enter a component Quantity: ");

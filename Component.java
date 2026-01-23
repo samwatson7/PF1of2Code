@@ -46,3 +46,5 @@ public class Component {
         return "Component ID:" + id + ", Name:" + name + ", Quantity:" + quantity + ", Threshold:" + threshold;
     }
 }
+
+
