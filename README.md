@@ -17,3 +17,16 @@ InputValidator.java - Validates all user inputs
 InventoryLogger.java - Records all inventory actions in an operational log
 NotificationManager.java - Checks the stock quantity of an object and sends notifications if a quantity drops below a threshold
 Main.java- Controls the program flow and interfaces with the user inputs
+inventory_log.txt - This represents the file that is written to when the operational log is updated
+inventory_storage_file.csv - Represents the database storage file that persists when the program isn't running
+
+--- Directions -- 
+1. Ensure Java JDK 17+ is installed
+2. Compile all of the .java files within the zip folder
+3. Run Main.java
+4. Follow cmd prompts
+
+--- Development Details ---
+Author: Sam Watson
+IDE: VSCode
+
